@@ -1,0 +1,11 @@
+SOURCE: https://www.reddit.com/r/gatech/comments/v87chm/cs_majors_rank_the_classes_you_took_from_hardest/
+
+TITLE: CS majors, rank the classes you took from hardest to easiest?
+
+POST: Or just drop which classes you found the absolute hardest/on the easier side besides some of the obvious ones (Lin Alg, Multivariable, CS1301/1331, PHYS). Id appreciate it!
+
+--- COMMENTS ---
+
+gtthrowaway24 (CS - 2022): Hey OP, just a couple notes on this question, assuming you're an incoming student. Bear in mind a lot of these courses are made easier/harder over time, e.g I've heard 2340 has become a lot more work in the last two years. Also a couple general resources for determining class difficulty: Critique - https://critique.gatech.edu contains historical GPA's broken down by course and instructor. Smartevals - https://gatech.smartevals.com contains aggregated reports of student responses to the course/instructor opinion surveys for each course for each semester, including questions like "On average, how many hours did you spend per week on this class?" This resource in particular is very helpful because you can cross-reference it against Critique to usually get an idea of what students think of specific instructors (Smartevals doesn't share which exact instructor the reviews were for, but Critique does - and typically only one or two instructors at most teach a CS course each semester).
+
+Qkwo (CS - 2023): Threads: People/Info. Easy: 1301, 1331, 2050, 4400, 3001. Medium: 1332, 2110, 2340 (bad group). Hard: 3510, 2200. Some people in this thread are cracked saying 1332 was a cakewalk, which i guess depends on if you had certain profs or not.

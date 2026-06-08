@@ -1,0 +1,16 @@
+SOURCE: https://www.ratemyprofessors.com/professor/2199464
+
+PROFESSOR: Mark Riedl — Computer Science, Georgia Institute of Technology
+OVERALL QUALITY: 3.6 / 5 (61 ratings) | Would take again: 73% | Level of difficulty: 2.8
+RATING DISTRIBUTION: Awesome(5): 25, Great(4): 13, Good(3): 7, OK(2): 6, Awful(1): 10
+
+--- REVIEWS ---
+
+[Feb 9, 2026] CS3600 | Grade: B | Quality 3.0 | Difficulty 3.0 | Tags: Lots of homework, Test heavy
+Each homework and exam were weighted equally (around 14% each iirc). I liked the homework assignments as they were very application based, but my issue was the tests being purely conceptual. Normally this wouldn't be an issue if the assignments prepared you for them, but they did not.
+
+[Jan 8, 2026] CS3600 | Grade: A | Quality 4.0 | Difficulty 3.0 | Would take again: Yes | Tags: Lots of homework, Respected, Lecture heavy
+Homeworks were worth around 70% of the final course grade. You were given 3ish weeks to do each of them. Asking TAs for help in office hours did change a lot. Content wise, the homework assignments and the exams felt a bit disassociated. The exams were very math and conceptually heavy but both the midterm and final exam did have generous curves.
+
+[Dec 26, 2025] CS3600 | Grade: A+ | Quality 4.0 | Difficulty 2.0 | Would take again: Yes
+The exams felt fair and received a generous curve. The professor is smart and kind, though clearly overqualified. Note that homework is long and worth 15% each, so be very careful with hidden test cases. I recommend visiting office hours to have the TAs double-check your submission logic and test cases within gradescope.

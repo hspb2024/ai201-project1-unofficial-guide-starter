@@ -1,0 +1,13 @@
+SOURCE: https://www.ratemyprofessors.com/professor/2267953
+
+PROFESSOR: David Joyner — Computer Science, Georgia Institute of Technology
+OVERALL QUALITY: 4.2 / 5 (186 ratings) | Would take again: 78% | Level of difficulty: 2.9
+RATING DISTRIBUTION: Awesome(5): 129, Great(4): 15, Good(3): 11, OK(2): 5, Awful(1): 27
+
+--- REVIEWS ---
+
+[Jun 5, 2026] CS1301 | Grade: B+ | Quality 1.0 | Difficulty 5.0 | Tags: Tough grader, Lots of homework
+In my experience, this professor was rarely available and seemed overwhelmed by the number of courses he was teaching. The exams were extremely difficult, and the TAs handled most of the teaching and student support. I would not recommend taking this class if you have other options. He's barely a professor at that point.
+
+[Apr 29, 2026] CS1301 | Grade: B | Quality 1.0 | Difficulty 3.0
+Do not take this course without prior Python experience.

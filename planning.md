@@ -9,27 +9,32 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+My system covers Computer Science course and professor reviews at Georgia Tech.
+
+This is useful because the official course catalog only tells you what topics a class covers. It does not
+tell you if a professor explains things well, if the exams are fair, or how heavy the workload is. That
+kind of info lives in places like Rate My Professors and the r/gatech subreddit, where students share
+honest opinions. My system pulls all of that into one place so a student can just ask a question and get
+a real answer.
 
 ---
 
 ## Documents
 
-<!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
-     Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
+<!-- Fill in the URL column as you collect each one. See documents/COLLECTION_GUIDE.md for how. -->
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | Rate My Professors | David Joyner reviews (intro CS, 4.2/5, polarized) | https://www.ratemyprofessors.com/professor/2267953 |
+| 2 | Rate My Professors | Ellen Zegura reviews (CS2050, low rated 1.9/5) | https://www.ratemyprofessors.com/professor/2578159 |
+| 3 | Rate My Professors | Mark Riedl reviews (CS3600, fair exams + curve) | https://www.ratemyprofessors.com/professor/2199464 |
+| 4 | Rate My Professors | Zhiwu Lin reviews (Math prof, polarized/spam case) | https://www.ratemyprofessors.com/professor/1238183 |
+| 5 | r/gatech | Thread: lowest RateMyProfessor rating at GT | https://www.reddit.com/r/gatech/comments/134ek02/ |
+| 6 | r/gatech | Thread: CS classes ranked hardest to easiest | https://www.reddit.com/r/gatech/comments/v87chm/ |
+| 7 | r/gatech | Thread: worst-designed classes (incl. CS 2340) | https://www.reddit.com/r/gatech/comments/z3y54a/ |
+| 8 | r/gatech | Thread: coolest profs at Tech | https://www.reddit.com/r/gatech/comments/1k3i97g/ |
+| 9 | Course Critique | CS 1331 GPA + grade distribution by instructor | https://critique.gatech.edu |
+| 10 | Rate My Professors | Keith McGreggor reviews (CS3790, mixed) | https://www.ratemyprofessors.com/professor/2512045 |
 
 ---
 

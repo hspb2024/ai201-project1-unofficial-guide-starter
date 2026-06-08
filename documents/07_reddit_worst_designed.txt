@@ -1,0 +1,17 @@
+SOURCE: https://www.reddit.com/r/gatech/comments/z3y54a/what_are_some_of_the_worst_designed_classes_youve/
+
+TITLE: What are some of the worst designed classes you've taken at tech?
+
+POST: Obviously some classes at tech are just difficult as fuck, but overall that doesn't always mean the class is poorly designed. But I'm taking ECE 3741 and wow, this is definitely one of the worst designed classes I've ever taken at tech. For one, you have a lab quiz at the beginning of each week. The quiz covers last week's lab, but all the TAs make their own quizzes. So you never know what exactly from the lab will be covered in the quiz. Also, for some reason, there is a final exam for this one credit hour lab class. The exam is closed note, cumulative, and covers the whole semester. The thing is that nobody actually memorized any of the formulas since we've always been able to look at the formulas while doing the lab. And probably the worst part of all, the final exam is scheduled for the Monday after thanksgiving break. The content itself is not particularly difficult, but they just make the class artificially difficult.
+
+--- COMMENTS ---
+
+FrankTheDeveloper: I'm a sophomore taking ECE 3710, the precursor to 3741, and that class is the definition of unreasonable. Why does a 2 credit hour class have a lab during class time, a quiz every week, and multiple videos and homework problems to submit before class time? The videos are also 20 years old and some of the concepts are just plain wrong/not how I was taught intuitively in high school.
+
+AeroBlaze777 (OP): 3710 was also an unreasonable amount of work. The class was also weird in the sense that the first two exams were a little difficult but the last exam was rather easy. 3741 is just 3710 again, but your labs are way more complex. And what's the deal making a closed note final exam with no formula sheet?
+
+FrankTheDeveloper: Yeah I did not know that 3741 had a final exam without a formula sheet, that's just crazy to me. Sounds to me like they're just adding unnecessary work to a class to make it difficult for no good reason.
+
+LibsThePilot (BS AE '22, MS AE '24): As a non-CS student, what's up with CS 2340? Also yeah I'm in ECE 3741 right now and it blows.
+
+TheJuciestPixel (BS CmpE - 2024 | MSCS): When I took 2340 (last spring) it was basically a class where you made a semester long project and then learned about diagrams and some amount of project management/higher level code design. It felt like a complete waste of time.
