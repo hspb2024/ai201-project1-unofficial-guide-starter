@@ -77,6 +77,33 @@ like `--- REVIEWS ---` are dropped.
 
 ---
 
+## Sample Chunks
+
+Five representative chunks, each labeled with its source document. Note the
+`[Source: ...]` prefix added to every chunk so it carries its subject and is
+retrievable on its own.
+
+**1. `01_rmp_joyner.txt`**
+> [Source: David Joyner, Computer Science] [Jun 5, 2026] CS1301 | Grade: B+ | Quality 1.0 | Difficulty 5.0 | Tags: Tough grader, Lots of homework
+> In my experience, this professor was rarely available and seemed overwhelmed by the number of courses he was teaching. The exams were extremely difficult, and the TAs handled most of the teaching and student support. I would not recommend taking this class if you have other options. He's barely a professor at that point.
+
+**2. `02_rmp_zegura.txt`**
+> [Source: Ellen Zegura, Computer Science] [Aug 16, 2023] CS2050 | Grade: A | Quality 1.0 | Difficulty 2.0
+> Kind lady, but not good at teaching.
+
+**3. `03_rmp_riedl.txt`**
+> [Source: Mark Riedl, Computer Science] [Dec 26, 2025] CS3600 | Grade: A+ | Quality 4.0 | Difficulty 2.0 | Would take again: Yes
+> The exams felt fair and received a generous curve. The professor is smart and kind, though clearly overqualified. Note that homework is long and worth 15% each, so be very careful with hidden test cases. I recommend visiting office hours to have the TAs double-check your submission logic and test cases within gradescope.
+
+**4. `06_reddit_class_difficulty.txt`**
+> [Source: r/gatech: CS majors, rank the classes you took from hardest to easiest?] POST: Or just drop which classes you found the absolute hardest/on the easier side besides some of the obvious ones (Lin Alg, Multivariable, CS1301/1331, PHYS). Id appreciate it!
+
+**5. `09_coursecritique.txt`**
+> [Source: Course Critique: CS 1331] COURSE: CS 1331 — Introduction to Object Oriented Programming (3 Credit Hours)
+> DESCRIPTION: Introduction to techniques and methods of object-oriented programming such as encapsulation, inheritance, and polymorphism. Emphasis on software development and individual programming skills.
+
+---
+
 ## Embedding Model
 
 **Model used:** `all-MiniLM-L6-v2` via sentence-transformers (384-dimensional),
@@ -98,6 +125,55 @@ that. For an English-only campus corpus at this scale, local MiniLM is the right
 call; I'd only move to a hosted model if evaluation showed retrieval was the
 bottleneck (and my failure case below suggests the bottleneck is query *type*, not
 the embedder).
+
+---
+
+## Retrieval Test Results
+
+Three queries run through `retrieve()` (cosine distance; lower = more relevant),
+showing the top returned chunks. Produced with `python evaluate.py`.
+
+**Query 1: "According to Course Critique, what is the average GPA for CS 1331?"**
+| Rank | Distance | Source | Chunk (start) |
+|---|---|---|---|
+| 1 | 0.244 | `09_coursecritique.txt` | "OVERALL: Average GPA 3.04 / 4.0 across 331 sections..." |
+| 2 | 0.362 | `09_coursecritique.txt` | "GPA BY INSTRUCTOR (GPA, then %A / %B...)" |
+| 3 | 0.420 | `06_reddit_class_difficulty.txt` | "gtthrowaway24: ...Critique - critique.gatech.edu contains historical GPAs..." |
+
+*Why these are relevant:* The top two hits are the exact Course Critique chunks
+for CS 1331, and chunk 1 literally contains "Average GPA 3.04 / 4.0," so the
+answer is directly supported. The very low distance (0.244) reflects that the
+query and the chunk share both topic (CS 1331 GPA) and vocabulary. Chunk 3 is a
+weaker but still on-topic match — it's the Reddit comment that *recommends*
+Course Critique for GPA data, which is conceptually related even though it doesn't
+contain the number.
+
+**Query 2: "Should I take CS 2050 with Ellen Zegura?"**
+| Rank | Distance | Source | Chunk (start) |
+|---|---|---|---|
+| 1 | 0.510 | `02_rmp_zegura.txt` | "One of the worst professors I have taken at this school..." |
+| 2 | 0.527 | `02_rmp_zegura.txt` | "PROFESSOR: Ellen Zegura ... OVERALL QUALITY: 1.9 / 5..." |
+| 3 | 0.535 | `02_rmp_zegura.txt` | "Kind lady, but not good at teaching." |
+
+*Why these are relevant:* All three top hits come from Zegura's review file and
+all concern CS 2050 specifically — exactly the professor/course in the query. This
+is the payoff of the `[Source: Ellen Zegura]` prefix on each chunk: the third
+review ("Kind lady, but not good at teaching") never names her in the sentence,
+yet it still ranks because her name was embedded into the chunk. The system has
+the right evidence to conclude "no."
+
+**Query 3: "Are Mark Riedl's exams curved?"**
+| Rank | Distance | Source | Chunk (start) |
+|---|---|---|---|
+| 1 | 0.508 | `03_rmp_riedl.txt` | "The exams felt fair and received a generous curve..." |
+| 2 | 0.537 | `03_rmp_riedl.txt` | "...the midterm and final exam did have generous curves." |
+| 3 | 0.615 | `10_rmp_mcgreggor.txt` | "[McGreggor] Probably the most fascinating lectures..." (off-topic) |
+
+*Why these are relevant:* The top two chunks are Riedl reviews that explicitly
+mention exams receiving a "generous curve," directly answering the question. Note
+the #3 hit jumps to distance 0.615 and is an unrelated McGreggor review — a useful
+illustration that only the first two results carry real signal, which is why
+top-k = 5 plus the model's grounding instruction matters (it ignores the weak hit).
 
 ---
 
@@ -126,6 +202,73 @@ out of the answer and maps them back to those chunks' source URLs, so the
 "Sources" shown under each answer are exactly the documents the answer actually
 drew from. A refusal cites no sources (correct). The Gradio UI also has a
 "Show the chunks that were retrieved" panel exposing the raw chunks and distances.
+
+---
+
+## Example Responses
+
+Two grounded responses (source attribution visible in the output text) and one
+out-of-scope query showing the refusal. These are verbatim system outputs.
+
+**Example 1 — grounded, with attribution**
+> **Q:** According to Course Critique, what is the average GPA for CS 1331?
+> **A:** The average GPA for CS 1331 is 3.04 / 4.0, according to the Course Critique [1].
+> **Sources:** `09_coursecritique.txt` — https://critique.gatech.edu
+
+**Example 2 — grounded, with attribution**
+> **Q:** Do students recommend taking CS 2050 with Ellen Zegura?
+> **A:** No, students do not recommend taking CS 2050 with Ellen Zegura. According to the reviews [1] and [3], students have expressed dissatisfaction with her teaching style, with one student stating "just don't take her" [1] and another saying "not good at teaching" [3]. The overall quality rating is also low, with a 1.9/5 rating and only 15% of students saying they would take the class again [2].
+> **Sources:** `02_rmp_zegura.txt` — https://www.ratemyprofessors.com/professor/2578159
+
+**Example 3 — out-of-scope query (refusal)**
+> **Q:** What is the best dining hall at Georgia Tech?
+> **A:** I don't have information about that in the collected reviews.
+> **Sources:** (none — the answer was not found in the reviews)
+
+Dining halls are outside this corpus (it only covers CS courses/professors), so
+the grounding instruction makes the model decline instead of inventing an answer.
+
+---
+
+## Query Interface
+
+The interface is a local Gradio web app (`python app.py`, served at
+`http://127.0.0.1:7860`).
+
+**Input field:**
+- *Your question* — a single free-text box where the user types a natural-language
+  question about GT CS courses or professors. Five clickable example questions are
+  provided below the box. Pressing Enter or clicking **Ask** submits.
+
+**Output fields:**
+- *Answer* — the grounded answer, followed by a **Sources** list of clickable links
+  to the documents the answer cited (or a note that nothing was cited on a refusal).
+- *Show the chunks that were retrieved* — a collapsible panel listing each of the
+  top-5 retrieved chunks with its cosine distance and source filename, so a user
+  can see exactly what evidence the answer was built from.
+
+**Sample interaction transcript:**
+```
+[User types in "Your question":]
+  Are Mark Riedl's exams in CS 3600 curved?
+
+[Answer panel shows:]
+  According to [1] and [2], yes, the exams in CS3600 with Mark Riedl are curved.
+  Both reviews mention that the exams had "generous curves".
+
+  ---
+  Sources
+  - 03_rmp_riedl.txt  (https://www.ratemyprofessors.com/professor/2199464)
+
+[Expanding "Show the chunks that were retrieved":]
+  [1] distance 0.508 · 03_rmp_riedl.txt
+      > [Source: Mark Riedl, Computer Science] ... The exams felt fair and
+        received a generous curve...
+  [2] distance 0.537 · 03_rmp_riedl.txt
+      > [Source: Mark Riedl, Computer Science] ... both the midterm and final
+        exam did have generous curves.
+  ... (3 more)
+```
 
 ---
 
